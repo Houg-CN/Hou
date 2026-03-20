@@ -1,0 +1,634 @@
+/* ============================================================
+   简历样式 — 深色双栏设计 · 响应式 · 打印友好
+   ============================================================ */
+
+:root {
+  --color-primary: #1e2235;
+  --color-primary-light: #e8e8f0;
+  --color-primary-dark: #111122;
+  --color-text: #1a1a2e;
+  --color-text-secondary: #4a4a5a;
+  --color-text-light: #8a8a9a;
+  --color-border: #e5e5ea;
+  --color-bg: #eeeef2;
+  --color-white: #ffffff;
+  --color-page: #ffffff;
+  --color-sidebar-bg: #f5f5f8;
+  --color-accent: #1e2235;
+
+  --font-sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --radius: 6px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,.08), 0 8px 30px rgba(0,0,0,.06);
+
+  --page-width: 210mm;
+  --page-min-height: 297mm;
+  --page-padding: 0;
+}
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 14px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  padding: 24px 0 60px;
+}
+
+/* ---- 简历页面容器 ---- */
+.resume-page {
+  width: var(--page-width);
+  min-height: var(--page-min-height);
+  margin: 24px auto;
+  background: var(--color-page);
+  box-shadow: var(--shadow-card);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* ============================================================
+   头部
+   ============================================================ */
+.header {
+  background: linear-gradient(135deg, #1e2235 0%, #282d45 100%);
+  color: #fff;
+  padding: 28px 36px 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.avatar-wrapper {
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255,255,255,.15);
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar svg {
+  opacity: .5;
+  stroke: #fff;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.title-role {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,.8);
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+.contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  font-size: 12px;
+  color: rgba(255,255,255,.65);
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.contact-item svg {
+  flex-shrink: 0;
+  opacity: .6;
+}
+
+/* ============================================================
+   双栏布局
+   ============================================================ */
+.body-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(var(--page-min-height) - 140px);
+}
+
+/* ---- 左栏 ---- */
+.sidebar {
+  background: var(--color-sidebar-bg);
+  padding: 24px 20px;
+  border-right: 1px solid var(--color-border);
+}
+
+/* ---- 右栏 ---- */
+.main-content {
+  padding: 24px 28px;
+}
+
+/* ============================================================
+   通用 Section
+   ============================================================ */
+.section {
+  margin-bottom: 22px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-primary);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--color-primary-light);
+  letter-spacing: .5px;
+}
+
+.section-title svg {
+  flex-shrink: 0;
+  stroke: var(--color-primary);
+}
+
+/* ---- 个人概况 ---- */
+.summary-text {
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  text-align: justify;
+}
+
+/* ---- 技能标签 ---- */
+.skills-group {
+  margin-bottom: 10px;
+}
+
+.skills-group:last-child {
+  margin-bottom: 0;
+}
+
+.skill-category {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 11.5px;
+  border-radius: 50px;
+  background: #ffffff;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.tag-primary {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-color: #d0d0dc;
+  font-weight: 500;
+}
+
+/* ---- 教育背景 ---- */
+.edu-item {
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 2px solid #c0c0d0;
+}
+
+.edu-item:last-child {
+  margin-bottom: 0;
+}
+
+.edu-degree {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.edu-school {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.edu-date {
+  font-size: 11px;
+  color: var(--color-text-light);
+  margin-top: 2px;
+}
+
+/* ---- 语言能力 ---- */
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.lang-item:last-child {
+  margin-bottom: 0;
+}
+
+.lang-name {
+  width: 32px;
+  flex-shrink: 0;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.lang-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.lang-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa);
+  border-radius: 3px;
+  transition: width .6s ease;
+}
+
+.lang-level {
+  width: 24px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 11px;
+  color: var(--color-text-light);
+}
+
+/* ============================================================
+   工作 & 项目经历
+   ============================================================ */
+.exp-item {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.exp-item:last-child {
+  margin-bottom: 0;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+.exp-company {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.exp-role {
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.exp-date {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  padding: 2px 10px;
+  background: var(--color-primary-light);
+  border-radius: 50px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.exp-list {
+  list-style: none;
+  padding: 0;
+}
+
+.exp-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+.exp-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: .6;
+}
+
+.exp-list li strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.project-link {
+  color: #6366f1;
+  text-decoration: none;
+  border-bottom: 1px dashed #6366f1;
+  transition: opacity .2s;
+}
+
+.project-link:hover {
+  opacity: .7;
+}
+
+/* ============================================================
+   响应式 — 手机适配
+   ============================================================ */
+@media screen and (max-width: 800px) {
+  html { font-size: 14px; }
+
+  body { padding: 0 0 40px; }
+
+  .toolbar {
+    position: sticky;
+    padding: 10px 16px;
+  }
+
+  .resume-page {
+    width: 100%;
+    min-height: auto;
+    margin-top: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .header {
+    padding: 24px 20px 18px;
+  }
+
+  .header-main {
+    gap: 14px;
+  }
+
+  .avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .avatar svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .name {
+    font-size: 22px;
+  }
+
+  .contact-bar {
+    gap: 4px 14px;
+    font-size: 11.5px;
+  }
+
+  .body-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid #e5e5ea;
+    padding: 20px;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .exp-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .exp-date {
+    align-self: flex-start;
+  }
+}
+
+/* ============================================================
+   打印样式 — A4 纸张优化
+   打印时切换为浅色方案，确保墨水友好
+   ============================================================ */
+.no-print {
+  /* 打印时隐藏 */
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  :root {
+    --color-primary: #1e2235;
+    --color-text: #111111;
+    --color-text-secondary: #444444;
+    --color-text-light: #888888;
+    --color-border: #d0d0d0;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    padding: 0;
+    margin: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .resume-page {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    background: #fff;
+    page-break-inside: avoid;
+  }
+
+  .header {
+    background: #1e2235 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .name { color: #fff !important; }
+  .title-role { color: rgba(255,255,255,.8) !important; }
+
+  .body-layout {
+    min-height: 0;
+  }
+
+  .sidebar {
+    background: #f5f5f5 !important;
+    border-right-color: #d0d0d0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .main-content {
+    background: #fff;
+  }
+
+  .tag {
+    background: #f0f0f0 !important;
+    color: #444 !important;
+    border-color: #d0d0d0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .tag-primary {
+    background: #e8e8f0 !important;
+    color: #1e2235 !important;
+    border-color: #d0d0dc !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .lang-fill {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .lang-bar {
+    background: #e0e0e0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .exp-date {
+    background: #e8e8f0 !important;
+    color: #444 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .exp-list li::before {
+    background: #1e2235 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .edu-item {
+    border-left-color: #c0c0d0 !important;
+  }
+
+  .exp-company, .edu-degree { color: #111 !important; }
+  .exp-role { color: #444 !important; }
+  .summary-text, .exp-list li, .edu-school { color: #444 !important; }
+  .exp-list li strong { color: #111 !important; }
+
+  .section-title {
+    color: #1e2235 !important;
+    border-bottom-color: #e0e0e8 !important;
+    break-after: avoid;
+  }
+
+  .section-title svg {
+    stroke: #1e2235 !important;
+  }
+
+  .avatar {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .exp-item {
+    break-inside: avoid;
+  }
+}
+
+/* ============================================================
+   动画（仅屏幕）
+   ============================================================ */
+@media screen {
+  .section {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeInUp .5s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .sidebar .section:nth-child(1) { animation-delay: .1s; }
+  .sidebar .section:nth-child(2) { animation-delay: .2s; }
+  .sidebar .section:nth-child(3) { animation-delay: .3s; }
+  .sidebar .section:nth-child(4) { animation-delay: .4s; }
+
+  .main-content .section:nth-child(1) { animation-delay: .15s; }
+  .main-content .section:nth-child(2) { animation-delay: .25s; }
+}
